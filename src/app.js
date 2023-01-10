@@ -1,15 +1,16 @@
-import cors from 'cors';
-import dotenv from 'dotenv';
-import express from 'express';
-import helmet from 'helmet';
-import mongoose from 'mongoose';
-import morgan from 'morgan';
-import router from './routes/index.js';
+import cors from 'cors'
+import dotenv from 'dotenv'
+import express from 'express'
+import helmet from 'helmet'
+import mongoose from 'mongoose'
+import morgan from 'morgan'
+import router from './routes/index.js'
 
 dotenv.config();
 const port = process.env.PORT || 8080;
 
 try {
+  mongoose.set("strictQuery", false);
   await mongoose.connect(process.env.MONGODB_URL);
   console.log("Connected successfully to MongoDB");
 } catch (error) {
